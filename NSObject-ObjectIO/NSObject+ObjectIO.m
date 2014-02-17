@@ -201,6 +201,11 @@ const NSUInteger kPBKDFRounds = 10000;
 
 #pragma mark - Dictionary to Object
 +(id)objectOfClass:(NSString *)object fromJSON:(NSDictionary *)dict withMap:(NSDictionary *)map reducedSize:(BOOL)reduced {
+    
+    if([object isEqualToString:@"NSDictionary"]){
+        return dict;
+    }
+    
     id newObject = [[NSClassFromString(object) alloc] init];
     
     NSDictionary *mapDictionary = [newObject propertyDictionary];
